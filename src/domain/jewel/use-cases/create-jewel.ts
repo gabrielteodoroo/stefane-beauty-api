@@ -19,26 +19,6 @@ export class CreateJewelUseCase {
   constructor(private jewelRepository: JewelRepository) {}
 
   async handle(request: Request): Promise<Response> {
-    const requiredFields: (keyof Request)[] = [
-      'name',
-      'price',
-      'stock',
-      'category',
-      'material',
-      'imageUrl',
-    ]
-    for (const field of requiredFields) {
-      if (
-        request[field] === undefined ||
-        request[field] === null ||
-        (typeof request[field] === 'string' && request[field] === '')
-      ) {
-        return left(
-          new NotAllowedError(`Campo obrigatório não preenchido: ${field}`),
-        )
-      }
-    }
-
     const nameAlreadyExists = await this.jewelRepository.findByName(
       request.name,
     )
