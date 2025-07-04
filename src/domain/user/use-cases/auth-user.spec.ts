@@ -37,7 +37,7 @@ describe('Auth User', () => {
       email: 'gabriel@email.com',
       password: '123456',
     })
-    console.log(response)
+
     expect(response.isRight()).toBe(true)
     expect(response.value).toEqual({
       token: expect.any(String),
