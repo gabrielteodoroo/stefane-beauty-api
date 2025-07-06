@@ -25,3 +25,16 @@ model User {
 
   @@map("users")
 }
+
+model Jewel {
+  id String @id @default(uuid())
+
+  name        String
+  description String
+  image       String
+  price       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("jewels")
+}
