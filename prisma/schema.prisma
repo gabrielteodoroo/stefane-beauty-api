@@ -30,9 +30,12 @@ model Jewel {
   id String @id @default(uuid())
 
   name        String
-  description String
-  image       String
   price       Int
+  stock       Int
+  category    String
+  material    String
+  imageUrl    String
+  description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
