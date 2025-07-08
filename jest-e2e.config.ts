@@ -15,6 +15,7 @@ const config: Config = {
     ...paths,
   },
   preset: 'ts-jest',
+  setupFilesAfterEnv: ['<rootDir>/test/setup-database.ts'],
 }
 
 export default config
