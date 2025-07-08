@@ -23,6 +23,7 @@ Este projeto foi desenvolvido seguindo os princípios da Clean Architecture, sep
 - **bcrypt** - Criptografia de senhas
 - **Jest** - Testes unitários e e2e
 - **class-validator** - Validação de dados
+- **Husky + lint-staged** - Garantia de padrão de commits e verificação automática dos arquivos staged
 
 ## 🚀 Como executar o projeto
 
