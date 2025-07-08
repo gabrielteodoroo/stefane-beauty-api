@@ -1,98 +1,293 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚀 API Body Piercing
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API RESTful para gerenciamento de joias e serviços de body piercing, construída com NestJS, TypeScript e Prisma.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📋 Descrição
 
-## Description
+Esta API permite o gerenciamento completo de:
+- **Joias**: Cadastro, listagem, busca, edição e remoção de joias
+- **Serviços**: Cadastro, listagem, busca, edição e remoção de serviços de piercing
+- **Usuários**: Cadastro e autenticação de usuários
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### 🏛️ Arquitetura Limpa (Clean Architecture)
 
-## Project setup
+Este projeto foi desenvolvido seguindo os princípios da Clean Architecture, separando claramente as camadas de domínio, aplicação e infraestrutura. Isso garante maior organização, testabilidade, facilidade de manutenção e evolução do sistema. Cada camada possui responsabilidades bem definidas, promovendo baixo acoplamento e alta coesão entre os módulos.
 
-```bash
-$ npm install
-```
+## 🛠️ Tecnologias
 
-## Compile and run the project
+- **NestJS** - Framework Node.js
+- **TypeScript** - Linguagem de programação
+- **Prisma** - ORM para banco de dados
+- **PostgreSQL** - Banco de dados
+- **JWT** - Autenticação
+- **bcrypt** - Criptografia de senhas
+- **Jest** - Testes unitários e e2e
+- **class-validator** - Validação de dados
 
-```bash
-# development
-$ npm run start
+## 🚀 Como executar o projeto
 
-# watch mode
-$ npm run start:dev
+### Pré-requisitos
 
-# production mode
-$ npm run start:prod
-```
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+- PostgreSQL
+- Git
 
-## Run tests
+### 1. Clone o repositório
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone git@github.com:gabrielteodoroo/stefane-beauty-api.git
+cd stefane-beauty-api
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 2. Instale as dependências
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### 3. Configure as variáveis de ambiente
 
-## Resources
+Crie um arquivo `.env` na raiz do projeto:
 
-Check out a few resources that may come in handy when working with NestJS:
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/stefane"
+JWT_SECRET="sua-chave-secreta-jwt"
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### 4. Configure o banco de dados
 
-## Support
+```bash
+# Execute as migrações do Prisma
+npx prisma migrate dev
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# (Opcional) Visualize o banco com Prisma Studio
+npx prisma studio
+```
 
-## Stay in touch
+### 5. Execute o projeto
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# Desenvolvimento
+npm run start:dev
 
-## License
+# Produção
+npm run start:prod
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+A API estará disponível em `http://localhost:3000`
+
+## 🧪 Testes
+
+> **Atenção:** Eu valorizo muito a qualidade do código e acredito que testes são fundamentais para garantir confiança, robustez e evolução segura do sistema. Por isso, este projeto possui testes unitários e de integração, buscando sempre alta cobertura e cenários reais!
+
+```bash
+# Testes unitários
+npm run test
+
+# Testes e2e
+npm run test:e2e
+
+# Cobertura de testes
+npm run test:cov
+```
+
+## 📚 Endpoints da API
+
+### Autenticação
+
+#### Cadastrar usuário
+```http
+POST /users
+Content-Type: application/json
+
+{
+  "name": "João Silva",
+  "email": "joao@email.com",
+  "password": "123456"
+}
+```
+
+#### Fazer login
+```http
+POST /login
+Content-Type: application/json
+
+{
+  "email": "joao@email.com",
+  "password": "123456"
+}
+```
+
+### Joias (Jewels)
+
+#### Listar joias
+```http
+GET /jewels
+Authorization: Bearer <token>
+```
+
+#### Buscar joia por ID
+```http
+GET /jewels/:id
+Authorization: Bearer <token>
+```
+
+#### Cadastrar joia
+```http
+POST /jewels
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Brincos de Prata",
+  "price": 100,
+  "stock": 10,
+  "category": "Brincos",
+  "material": "Prata",
+  "imageUrl": "https://i.imgur.com/65ifEZQ.jpeg",
+  "description": "Brincos de prata"
+}
+```
+
+#### Editar joia
+```http
+PUT /jewels/:id
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Brincos de Ouro",
+  "price": 150,
+  "stock": 5,
+  "category": "Brincos",
+  "material": "Ouro",
+  "imageUrl": "https://i.imgur.com/65ifEZQ.jpeg",
+  "description": "Brincos de ouro"
+}
+```
+
+#### Deletar joia
+```http
+DELETE /jewels/:id
+Authorization: Bearer <token>
+```
+
+### Serviços (Services)
+
+#### Listar serviços
+```http
+GET /services
+Authorization: Bearer <token>
+```
+
+#### Buscar serviço por ID
+```http
+GET /services/:id
+Authorization: Bearer <token>
+```
+
+#### Cadastrar serviço
+```http
+POST /services
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Piercing de Orelha",
+  "description": "Piercing simples na orelha",
+  "price": 50.0,
+  "category": "Piercing"
+}
+```
+
+#### Editar serviço
+```http
+PUT /services/:id
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Piercing de Nariz",
+  "description": "Piercing no nariz",
+  "price": 80.0,
+  "category": "Piercing"
+}
+```
+
+#### Deletar serviço
+```http
+DELETE /services/:id
+Authorization: Bearer <token>
+```
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── app.module.ts                 # Módulo principal
+├── main.ts                      # Arquivo de inicialização
+├── core/                        # Camada de domínio compartilhado
+│   ├── entities/                # Entidades base
+│   └── errors/                  # Tratamento de erros
+├── domain/                      # Camada de domínio
+│   ├── jewel/                   # Domínio de joias
+│   │   ├── entities/           # Entidades
+│   │   ├── repositories/       # Interfaces de repositório
+│   │   └── use-cases/         # Casos de uso
+│   ├── service/                # Domínio de serviços
+│   │   ├── entities/          # Entidades
+│   │   ├── repositories/      # Interfaces de repositório
+│   │   └── use-cases/        # Casos de uso
+│   └── user/                  # Domínio de usuários
+│       ├── entities/          # Entidades
+│       ├── repositories/      # Interfaces de repositório
+│       └── use-cases/        # Casos de uso
+├── infra/                      # Camada de infraestrutura
+│   ├── auth/                  # Autenticação
+│   ├── crypto/                # Criptografia
+│   ├── database/              # Banco de dados
+│   │   └── prisma/           # Implementação Prisma
+│   ├── http/                 # Controllers HTTP
+│   │   ├── jewel/           # Controllers de joias
+│   │   ├── service/         # Controllers de serviços
+│   │   └── user/            # Controllers de usuários
+│   └── presenters/           # Conversores para HTTP
+└── test/                     # Testes
+    ├── repositories/         # Repositórios em memória
+    └── services/            # Serviços de teste
+```
+
+## 🔧 Comandos Úteis
+
+```bash
+# Gerar nova migração
+npx prisma migrate dev --name nome-da-migracao
+
+# Resetar banco de dados
+npx prisma migrate reset
+
+# Visualizar banco de dados
+npx prisma studio
+
+# Gerar cliente Prisma
+npx prisma generate
+
+# Executar testes em modo watch
+npm run test:watch
+
+# Executar testes e2e em modo watch
+npm run test:e2e:watch
+```
+
+## 👥 Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/NomeDaFeature`)
+3. Commit suas mudanças (`git commit -m 'Minha feature'`)
+4. Push para a branch (`git push origin feature/NomeDaFeature`)
+5. Abra um Pull Request
+
+## 📞 Suporte
+
+Para dúvidas ou suporte, abra uma issue no GitHub.
