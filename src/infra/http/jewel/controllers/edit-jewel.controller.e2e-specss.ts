@@ -1,1 +1,0 @@
-describe('Edit jewel controller', () => {})

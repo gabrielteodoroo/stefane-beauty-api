@@ -9,6 +9,8 @@ import { ListJewelUseCase } from '@/domain/jewel/use-cases/list-jewel'
 import { ListJewelController } from './controllers/list-jewel.controller'
 import { DeleteJewelController } from './controllers/delete-jewel.controller'
 import { DeleteJewelUseCase } from '@/domain/jewel/use-cases/delete-jewel'
+import { EditJewelUseCase } from '@/domain/jewel/use-cases/edit-jewel'
+import { EditJewelController } from './controllers/edit-jewel.controller'
 
 @Module({
   imports: [DatabaseModule],
@@ -41,12 +43,20 @@ import { DeleteJewelUseCase } from '@/domain/jewel/use-cases/delete-jewel'
       },
       inject: [JewelRepository],
     },
+    {
+      provide: EditJewelUseCase,
+      useFactory: (jewelRepository: JewelRepository) => {
+        return new EditJewelUseCase(jewelRepository)
+      },
+      inject: [JewelRepository],
+    },
   ],
   controllers: [
     CreateJewelController,
     GetJewelController,
     ListJewelController,
     DeleteJewelController,
+    EditJewelController,
   ],
 })
 export class JewelModule {}

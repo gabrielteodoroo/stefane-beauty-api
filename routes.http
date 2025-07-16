@@ -1,6 +1,278 @@
-POST http://localhost:3000/login
+### Variáveis de ambiente
+@baseUrl = http://localhost:3000
+@authToken = {{login.response.body.token}}  
+@serviceId = service-id-example
+@jewelId = jewel-id-example
+
+### ========================================
+### AUTENTICAÇÃO
+### ========================================
+
+# Login
+# @name login
+POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-  "email": "test@example.com"
+  "email": "test@example.com",
+  "password": "123456"
 }
+
+###
+
+# Criar usuário
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Estefane",
+  "email": "estefane@gmail.com",
+  "password": "Teste@123"
+}
+
+###
+
+### ========================================
+### SERVIÇOS
+### ========================================
+
+# Listar todos os serviços
+GET {{baseUrl}}/services
+Authorization: Bearer {{authToken}}
+
+###
+
+# Buscar serviço por ID
+GET {{baseUrl}}/services/{{serviceId}}
+Authorization: Bearer {{authToken}}
+
+###
+
+# Criar novo serviço
+POST {{baseUrl}}/services
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Piercing de Orelha",
+  "description": "Piercing simples na orelha",
+  "price": 50.0,
+  "category": "Piercing"
+}
+
+###
+
+# Atualizar serviço
+PUT {{baseUrl}}/services/{{serviceId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Piercing de Nariz",
+  "description": "Piercing no nariz",
+  "price": 80.0,
+  "category": "Piercing"
+}
+
+###
+
+# Deletar serviço
+DELETE {{baseUrl}}/services/{{serviceId}}
+Authorization: Bearer {{authToken}}
+
+###
+
+### ========================================
+### JOIAS
+### ========================================
+
+# Listar todas as joias
+GET {{baseUrl}}/jewels
+Authorization: Bearer {{authToken}}
+
+###
+
+# Buscar joia por ID
+GET {{baseUrl}}/jewels/{{jewelId}}
+Authorization: Bearer {{authToken}}
+
+###
+
+# Criar nova joia
+POST {{baseUrl}}/jewels
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Brincos de Prata",
+  "price": 100.0,
+  "stock": 10,
+  "category": "Brincos",
+  "material": "Prata",
+  "imageUrl": "https://i.imgur.com/65ifEZQ.jpeg",
+  "description": "Brincos de prata 925"
+}
+
+###
+
+# Atualizar joia
+PUT {{baseUrl}}/jewels/{{jewelId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Brincos de Ouro",
+  "price": 200.0,
+  "stock": 5,
+  "category": "Brincos",
+  "material": "Ouro",
+  "imageUrl": "https://i.imgur.com/example.jpeg",
+  "description": "Brincos de ouro 18k"
+}
+
+###
+
+# Deletar joia
+DELETE {{baseUrl}}/jewels/{{jewelId}}
+Authorization: Bearer {{authToken}}
+
+###
+
+### ========================================
+### HEALTH CHECK
+### ========================================
+
+# Health check
+GET {{baseUrl}}/
+
+###
+
+### ========================================
+### EXEMPLOS DE DADOS PARA TESTES
+### ========================================
+
+### Criar usuário para testes
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Maria Santos",
+  "email": "maria@example.com",
+  "password": "senha123"
+}
+
+###
+
+### Login com usuário criado
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "maria@example.com",
+  "password": "senha123"
+}
+
+###
+
+### Criar serviço de exemplo
+POST {{baseUrl}}/services
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Piercing de Umbigo",
+  "description": "Piercing no umbigo com joia",
+  "price": 120.0,
+  "category": "Piercing Corporal"
+}
+
+###
+
+### Criar joia de exemplo
+POST {{baseUrl}}/jewels
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Anel de Nariz",
+  "price": 75.0,
+  "stock": 15,
+  "category": "Anéis",
+  "material": "Titanium",
+  "imageUrl": "https://i.imgur.com/nose-ring.jpeg",
+  "description": "Anel de nariz em titânio"
+}
+
+###
+
+### Teste com dados inválidos - Login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "email-invalido",
+  "password": ""
+}
+
+###
+
+### Teste com dados inválidos - Criar usuário
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "email-invalido",
+  "password": "123"
+}
+
+###
+
+### Teste com dados inválidos - Criar serviço
+POST {{baseUrl}}/services
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "",
+  "description": "",
+  "price": -10,
+  "category": ""
+}
+
+###
+
+### Teste com dados inválidos - Criar joia
+POST {{baseUrl}}/jewels
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": -50,
+  "stock": -5,
+  "category": "",
+  "material": "",
+  "imageUrl": "url-invalida",
+  "description": ""
+}
+
+###
+
+### Teste sem autenticação - Listar serviços
+GET {{baseUrl}}/services
+
+###
+
+### Teste sem autenticação - Criar serviço
+POST {{baseUrl}}/services
+Content-Type: application/json
+
+{
+  "name": "Teste sem auth",
+  "description": "Teste sem autenticação",
+  "price": 50.0,
+  "category": "Teste"
+}
+
+###
