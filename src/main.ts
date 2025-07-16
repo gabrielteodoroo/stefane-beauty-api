@@ -2,10 +2,16 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { ValidationPipe } from '@nestjs/common'
 
-async function bootstrap() {
+export async function createNestServer() {
   const app = await NestFactory.create(AppModule)
   app.useGlobalPipes(new ValidationPipe())
   app.enableCors()
-  await app.listen(process.env.PORT ?? 3000)
+  await app.init()
+  return app.getHttpAdapter().getInstance()
 }
-bootstrap()
+
+if (require.main === module) {
+  createNestServer().then((server) => {
+    server.listen(process.env.PORT ?? 3000)
+  })
+}
