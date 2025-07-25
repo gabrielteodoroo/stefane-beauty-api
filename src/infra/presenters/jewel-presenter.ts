@@ -9,7 +9,9 @@ export class JewelPresenter {
       stock: jewel.stock,
       category: jewel.category,
       material: jewel.material,
-      imageUrl: jewel.imageUrl,
+      imageUrl: jewel.imageUrl
+        ? `${process.env.S3_BASE_URL}/${jewel.imageUrl}`
+        : null,
       description: jewel.description,
     }
   }
