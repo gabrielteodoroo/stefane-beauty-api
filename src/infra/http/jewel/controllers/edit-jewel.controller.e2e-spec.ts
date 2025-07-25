@@ -59,18 +59,19 @@ describe('Edit jewel controller', () => {
 
     const token = jwt.sign(user)
 
+    /* eslint-disable */
     const response = await request(app.getHttpServer())
       .put(`/jewels/${jewel.id}`)
       .set('Authorization', `Bearer ${token}`)
-      .send({
-        name: 'Brinco de Ouro',
-        price: 150,
-        stock: 5,
-        category: 'Brincos',
-        material: 'Ouro',
-        imageUrl: 'https://i.imgur.com/65ifEZQ.jpeg',
-        description: 'Brinco de ouro',
-      })
+      .field('name', 'Brinco de Ouro')
+      .field('price', 150)
+      .field('stock', 5)
+      .field('category', 'Brincos')
+      .field('material', 'Ouro')
+      .field('description', 'Brinco de ouro')
+      .attach('image', __dirname + '/fotojoia.jpg')
+
+    console.log(response.body)
 
     expect(response.statusCode).toBe(204)
   })

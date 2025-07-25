@@ -47,18 +47,17 @@ describe('CreateJewelController', () => {
   test('/jewels (POST)', async () => {
     const token = jwt.sign(user)
 
+    /* eslint-disable */
     const response = await request(app.getHttpServer())
       .post('/jewels')
       .set('Authorization', `Bearer ${token}`)
-      .send({
-        name: 'Brincos de prata',
-        price: 100,
-        stock: 10,
-        category: 'Brincos',
-        material: 'Prata',
-        imageUrl: 'https://i.imgur.com/65ifEZQ.jpeg',
-        description: 'Brincos de prata',
-      })
+      .field('name', 'Brincos de prata')
+      .field('price', 100)
+      .field('stock', 10)
+      .field('category', 'Brincos')
+      .field('material', 'Prata')
+      .field('description', 'Brincos de prata')
+      .attach('image', __dirname + '/fotojoia.jpg')
 
     expect(response.statusCode).toBe(201)
   })
