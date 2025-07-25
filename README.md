@@ -135,37 +135,37 @@ Authorization: Bearer <token>
 ```
 
 #### Cadastrar joia
+
+
 ```http
 POST /jewels
 Authorization: Bearer <token>
-Content-Type: application/json
+Content-Type: multipart/form-data
 
-{
-  "name": "Brincos de Prata",
-  "price": 100,
-  "stock": 10,
-  "category": "Brincos",
-  "material": "Prata",
-  "imageUrl": "https://i.imgur.com/65ifEZQ.jpeg",
-  "description": "Brincos de prata"
-}
+(image: arquivo da imagem, obrigatório)
+name: Brincos de Prata
+price: 100
+stock: 10
+category: Brincos
+material: Prata
+description: Brincos de prata
 ```
 
 #### Editar joia
+
 ```http
 PUT /jewels/:id
 Authorization: Bearer <token>
-Content-Type: application/json
+Content-Type: multipart/form-data
 
-{
-  "name": "Brincos de Ouro",
-  "price": 150,
-  "stock": 5,
-  "category": "Brincos",
-  "material": "Ouro",
-  "imageUrl": "https://i.imgur.com/65ifEZQ.jpeg",
-  "description": "Brincos de ouro"
-}
+(image: arquivo da imagem, opcional)
+name: Brincos de Ouro
+price: 150
+stock: 5
+category: Brincos
+material: Ouro
+description: Brincos de ouro
+imageUrl: URL da imagem
 ```
 
 #### Deletar joia
