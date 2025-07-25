@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { DatabaseModule } from '@/infra/database/database.module'
+import { UploadModule } from '@/infra/upload/upload.module'
 import { CreateJewelUseCase } from '@/domain/jewel/use-cases/create-jewel'
 import { JewelRepository } from '@/domain/jewel/repositories/jewel-repository'
 import { CreateJewelController } from './controllers/create-jewel.controller'
@@ -13,7 +14,7 @@ import { EditJewelUseCase } from '@/domain/jewel/use-cases/edit-jewel'
 import { EditJewelController } from './controllers/edit-jewel.controller'
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, UploadModule],
   providers: [
     {
       provide: CreateJewelUseCase,
