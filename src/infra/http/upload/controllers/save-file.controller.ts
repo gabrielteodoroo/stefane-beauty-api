@@ -7,7 +7,9 @@ import {
   UseInterceptors,
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
+import { ApiExcludeController } from '@nestjs/swagger'
 
+@ApiExcludeController()
 @Controller('/upload')
 export class SaveFileController {
   constructor(private readonly saveFile: SaveFileUseCase) {}
