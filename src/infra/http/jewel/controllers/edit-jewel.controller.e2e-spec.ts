@@ -71,8 +71,6 @@ describe('Edit jewel controller', () => {
       .field('description', 'Brinco de ouro')
       .attach('image', __dirname + '/fotojoia.jpg')
 
-    console.log(response.body)
-
     expect(response.statusCode).toBe(204)
   })
 })
