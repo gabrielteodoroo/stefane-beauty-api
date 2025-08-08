@@ -52,7 +52,7 @@ describe('CreateJewelController', () => {
       .post('/jewels')
       .set('Authorization', `Bearer ${token}`)
       .field('name', 'Brincos de prata')
-      .field('price', 100)
+      .field('price', 100.5)
       .field('stock', 10)
       .field('category', 'Brincos')
       .field('material', 'Prata')

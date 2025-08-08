@@ -22,6 +22,8 @@ export class CreateJewelDTO {
     description: 'Preço da joia em reais',
     example: 89.9,
     minimum: 0,
+    type: 'number',
+    format: 'float',
   })
   @IsNotEmpty()
   @IsNumber()

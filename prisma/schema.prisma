@@ -29,7 +29,7 @@ model Jewel {
   id String @id @default(uuid())
 
   name        String
-  price       Int
+  price       Decimal  @db.Decimal(10, 2)
   stock       Int
   category    String
   material    String

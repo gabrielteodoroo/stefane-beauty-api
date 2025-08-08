@@ -36,7 +36,6 @@ export class GetJewelController {
     if (response.isLeft()) {
       throw new NotFoundException(response.value.message)
     }
-
     return JewelPresenter.toHTTP(response.value)
   }
 }
